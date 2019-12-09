@@ -69,7 +69,7 @@ sgd = SGD(lr=0.001)
 model.compile(optimizer=sgd, loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Train the model and use validation data
-history = model.fit(train_x, train_y, batch_size=16, epochs=5000, verbose=1, validation_data=(val_x, val_y)).history
+history = model.fit(train_x, train_y, batch_size=16, epochs=100, verbose=1, validation_data=(val_x, val_y)).history
 pd.DataFrame(history).to_csv("historydota2.csv")
 
 # lets assume `model` is main model 
@@ -77,8 +77,9 @@ pd.DataFrame(history).to_csv("historydota2.csv")
 #with open("model_in_json.json", "w") as json_file:
 #    json.dump(model_json, json_file)
 
-#model.save_weights("model_weights.h5")
-model.save_weights('weight.h5')
+model.save("bobot_model1.h5")
+model.save_weights("bobot_model2.h5")
+#model.save_weights('weight.h5')
 
 
 # Predict all Validation data

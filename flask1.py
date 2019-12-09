@@ -9,11 +9,11 @@ import flask
 
 app = Flask(__name__)
 
-#with open('model_in_json.json','r') as f:
-#    model_json = json.load(f)
+with open('model_in_json.json','r') as f:
+    model_json = json.load(f)
 
-#model = model_from_json(model_json)
-model.load_weights('weights.h5')
+model = model_from_json(model_json)
+model.load_weights('model_weights.h5')
 
 graph = tf.get_default_graph()
 
@@ -34,4 +34,4 @@ def predict():
         return flask.jsonify(data)
 
 # start the flask app, allow remote connections 
-app.run(host='0.0.0.0', port=5000, debug=True)
+app.run(host='127.0.0.1', port=5000, debug=False)
